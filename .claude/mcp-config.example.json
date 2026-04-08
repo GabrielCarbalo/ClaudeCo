@@ -1,0 +1,32 @@
+{
+  "_comment": "Add this to your local Claude settings to enable MCP servers.",
+  "_windows_path": "%USERPROFILE%\\.claude\\settings.json",
+  "_docs": "https://docs.anthropic.com/en/docs/claude-code/mcp",
+
+  "mcpServers": {
+    "filesystem": {
+      "_description": "Allows Claude to read/write files outside the project",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "C:\\Users\\YourUser\\projects"],
+      "env": {}
+    },
+
+    "postgres": {
+      "_description": "Direct SQL queries to your local PostgreSQL (matches docker-compose.yml)",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "postgresql://claudeco:claudeco@localhost:5432/claudeco"
+      ],
+      "env": {}
+    },
+
+    "sequential-thinking": {
+      "_description": "Structured multi-step reasoning for complex architectural decisions",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+      "env": {}
+    }
+  }
+}

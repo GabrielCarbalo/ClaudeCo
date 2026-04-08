@@ -1,6 +1,6 @@
-import Fastify from 'fastify'
-import cors from '@fastify/cors'
 import type { HealthResponse } from '@claudeco/shared'
+import cors from '@fastify/cors'
+import Fastify from 'fastify'
 
 const app = Fastify({ logger: true })
 

@@ -8,7 +8,7 @@ on:
 
 jobs:
   ci:
-    name: Lint, Build & Test
+    name: Check, Lint & Test
     runs-on: ubuntu-latest
 
     steps:
@@ -26,14 +26,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Lint
-        run: pnpm lint
+      - name: Type check
+        run: pnpm -r typecheck || pnpm -r --if-present typecheck
 
-      - name: Build shared package
-        run: pnpm --filter @claudeco/shared build
+      - name: Lint (Biome)
+        run: pnpm lint
 
       - name: Test
         run: pnpm test
 
       - name: Build apps
-        run: pnpm build
+        run: pnpm -r --if-present build

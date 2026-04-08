@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest'
 import type { HealthResponse } from '@claudeco/shared'
+import { describe, expect, it } from 'vitest'
 
 describe('HealthResponse shape', () => {
   it('has required fields', () => {

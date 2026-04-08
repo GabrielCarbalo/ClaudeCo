@@ -1,7 +1,6 @@
 {
   "recommendations": [
-    "esbenp.prettier-vscode",
-    "dbaeumer.vscode-eslint",
+    "biomejs.biome",
     "bradlc.vscode-tailwindcss",
     "ms-vscode-remote.remote-wsl",
     "ms-azuretools.vscode-docker",
