@@ -15,3 +15,24 @@ export interface PaginatedResponse<T> {
   page: number
   pageSize: number
 }
+export type LoginRequest = {
+  email: string
+  password: string
+}
+
+export type RegisterRequest = {
+  email: string
+  password: string
+  name?: string
+} 
+
+export type AuthTokens = {
+  accessToken: string
+}
+
+export type UserProfile = {
+  id: string
+  email: string
+  name?: string
+  createdAt: string
+}
