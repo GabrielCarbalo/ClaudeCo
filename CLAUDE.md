@@ -70,6 +70,25 @@ app.get<{ Reply: HealthResponse }>('/api/health', async () => {
 })
 ```
 
+## Environment Variables (apps/api)
+
+- Never hardcode secrets, tokens, or credentials in source code.
+- Read all sensitive values from `process.env`. Validate at startup — fail fast if a required
+  variable is missing so the error surfaces immediately, not at the call site.
+- Document every variable in `apps/api/.env.example` with a safe placeholder value.
+
+```ts
+// Bad — hardcoded secret, silent failure if undefined
+const secret = 'sk-proj-xxxxx'
+const port = process.env.PORT // silently undefined in some envs
+
+// Good — explicit validation at startup boundary
+const jwtSecret = process.env.JWT_SECRET
+if (!jwtSecret) throw new Error('JWT_SECRET is required')
+
+const PORT = Number(process.env.PORT) || 3001
+```
+
 ## Shared Package (packages/shared)
 
 - This package contains types only. No runtime logic, no side effects.
