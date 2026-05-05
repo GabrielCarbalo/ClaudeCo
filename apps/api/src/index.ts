@@ -1,7 +1,9 @@
 import type { HealthResponse } from '@claudeco/shared'
 import cors from '@fastify/cors'
 import Fastify from 'fastify'
+
 import { authRoutes } from './auth'
+import dbPlugin from './plugins/db'
 import jwtPlugin from './plugins/jwt'
 
 const app = Fastify({ logger: true })
@@ -10,6 +12,7 @@ await app.register(cors, {
   origin: ['http://localhost:3000'],
 })
 
+await app.register(dbPlugin)
 await app.register(jwtPlugin)
 await app.register(authRoutes, { prefix: '/auth' })
 
